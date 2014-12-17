@@ -1,0 +1,240 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>MyCat 1.0 - Changelog</title>
+<meta name="author" content="micmiu.com">
+<style type="text/css" media="print">
+.noPrint {
+	display: none;
+}
+
+td#mainBody {
+	width: 100%;
+}
+</style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#525D76" alink="#525D76"
+	vlink="#525D76">
+	<div>
+	<h1>MyCat 1.1</h1>
+	<h2>Changelog</h2>
+	<table cellspacing="0" cellpadding="2" border="0">
+		<tbody>
+			<tr>
+				<td bgcolor="#525D76"><font face="arial,helvetica.sanserif"
+					color="#ffffff"><a name="MyCat 1.1">
+							<!--()-->
+					</a><a name="MyCat 1.0"><strong>MyCat 1.1 (svn:r349)</strong></a></font></td>
+			</tr>
+			<tr>
+				<td><blockquote>
+						<table cellspacing="0" cellpadding="2" border="0">
+							<tbody>
+								<tr>
+									<td bgcolor="#828DA6"><font
+										face="arial,helvetica.sanserif" color="#ffffff"><a
+											name="MyCat 1.1/特性">
+												<!--()-->
+										</a><a name="MyCat 1.1/特性"><strong>特性</strong></a></font></td>
+								</tr>
+								<tr>
+									<td><blockquote>
+											<table cellspacing="2" cellpadding="2" border="0">
+												<tbody>
+														<tr><td>+</td><td>实现了日期范围分片以及Between语法路由的支持</td></tr>
+												<tr><td>+</td><td>实现了Database切换的功能</td></tr>
+														<tr><td>+</td><td>实现了后端连接池管理，包括连接池心跳检测以及最小空闲连接自动创建机制</td></tr>
+													<tr><td>+</td><td>Cobar NIO框架精确优化（含ByteBuffer安全回收方法），提升了IO效率降低CPU占用率</td></tr>
+													<tr><td>+</td><td>ER分片路由大幅优化，ER分片可以进入生产实用阶段</td></tr>
+													<tr><td>+</td><td>路由算法大量优化，提升性能</td></tr>
+													<tr><td>+</td><td>增加非主键分片时候主键到分片的缓存逻辑，提升性能</td></tr>
+													<tr><td>+</td><td>增加缓存统计情况的管理指令show @@cache</td></tr>
+													<tr><td>+</td><td>优化Socket Buffer管理，增加日志和监控信息</td></tr>
+												</tbody>
+											</table>
+										</blockquote></td>
+								</tr>
+							</tbody>
+						</table>
+						<table cellspacing="0" cellpadding="2" border="0">
+							<tbody>
+								<tr>
+									<td bgcolor="#828DA6"><font
+										face="arial,helvetica.sanserif" color="#ffffff"><a
+											name="MyCat 1.0/Fix bug">
+												<!--()-->
+										</a><a name="MyCat 1.0/Fix bug"><strong>Fix bug</strong></a></font></td>
+								</tr>
+								<tr>
+									<td><blockquote>
+											<table cellspacing="2" cellpadding="2" border="0">
+												<tbody>
+													<tr>
+														<td>*</td>
+														<td>修复了某一分片数据为空的情况时汇聚出错的BUG </td>
+													</tr>
+												<tr>
+														<td>*</td>
+														<td>修复了多个全局表关联查询的路由BUG </td>
+													</tr>
+													<tr>
+														<td>*</td>
+														<td>修复了有时候出现连接不了的BUG </td>
+													</tr
+													<tr>
+														<td>*</td>
+														<td>修复了连接池心跳检测和多主切换的BUG </td>
+													</tr>
+													<tr>
+														<td>*</td>
+														<td>小数与负数排序归并错误的BUG</td>
+													</tr>
+													<tr>
+														<td>*</td>
+														<td>连接读取数据EOF时，不再抛出异常，而是close</td>
+													</tr>
+														<tr>
+														<td>*</td>
+														<td>解决了偶尔出现的EOF 读取异常问题（Cobar遗留，quit命令导致）</td>
+													</tr>
+												<tr>
+													<tr>
+														<td>*</td>
+														<td>解决了偶尔出现的Key Cancled异常以及Hange的问题（Cobar遗留）</td>
+													</tr>
+												<tr>
+														<td>*</td>
+														<td>Kill 前端连接后，释放会话的资源(Cobar遗留问题）</td>
+													</tr>
+													
+												</tbody>
+											</table>
+										</blockquote></td>
+								</tr>
+							</tbody>
+						</table>
+						<table cellspacing="0" cellpadding="2" border="0">
+							<tbody>
+								<tr>
+									<td bgcolor="#828DA6"><font
+										face="arial,helvetica.sanserif" color="#ffffff"><a
+											name="MyCat 1.0/Author">
+												<!--()-->
+										</a><a name="MyCat 1.0/Author"><strong>Author</strong></a></font></td>
+								</tr>
+								<tr>
+									<td><blockquote>
+											<table cellspacing="2" cellpadding="2" border="0">
+												<tbody>
+													<tr>
+														<td>孙娟(酱油师）</td>
+														<td>全局序列号更新</td>
+													</tr>
+													<tr>
+														<td>(opencloudber）</td>
+														<td>排序归并的一些缺陷发现并修复</td>
+													</tr>
+													<tr>
+														<td>王金成(永不言败）</td>
+														<td>发现和修复一些缺陷</td>
+													</tr>
+													<tr>
+														<td>蒋常春（CC）</td>
+														<td>性能测试</td>
+													</tr>
+													<tr>
+														<td>白磊（first level ）</td>
+														<td>性能测试</td>
+													</tr>
+													<tr>
+														<td>李翔远（光电=ω=鼠标 ）</td>
+														<td>时间范围分片函数以及between支持</td>
+													</tr>
+													<tr>
+														<td>黄进兵（疯鱼）</td>
+														<td>贡献字符串分片函数</td>
+													</tr>
+													tr>
+														<td>高权（IT坨坨）</td>
+														<td>测试以及缺陷反馈</td>
+													</tr>
+													<tr>
+														<td>吴志辉（Leader）</td>
+														<td>MyCat-server</td>
+													</tr>
+													<tr>
+														<td>rainbow 团队</td>
+														<td>MyCat-web</td>
+													</tr>
+													<tr>
+														<td>Qing</td>
+														<td>MyCat-cluster</td>
+													</tr>
+													<tr>
+														<td>提婆谭（暂定）</td>
+														<td>MyCat-Balance</td>
+													</tr>
+													<tr>
+														<td>Michael<a href="http://www.micmiu.com" target="_blank">@micmiu.com</td>
+														<td>MyCat-server</td>
+													</tr>
+													<tr>
+														<td>无影</td>
+														<td>MyCat-server</td>
+													</tr>
+													<tr>
+														<td>shenzhw</td>
+														<td>性能测试</td>
+													</tr>
+													<tr>
+														<td>小鱼</td>
+														<td>测试</td>
+													</tr>
+													<tr>
+														<td>阿德</td>
+														<td>排序算法</td>
+													</tr>
+													<tr>
+														<td>木糖醇患者</td>
+														<td>修复BUG</td>
+													</tr>
+													<tr><td colspan="2">很多志愿者在努力研发中，后期版本陆续列出贡献者信息</tr>
+												</tbody>
+											</table>
+										</blockquote>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<table cellspacing="0" cellpadding="2" border="0">
+							<tbody>
+								<tr>
+									<td bgcolor="#828DA6"><font
+										face="arial,helvetica.sanserif" color="#ffffff"><a
+											name="MyCat 1.0/Other">
+												<!--()-->
+										</a><a name="MyCat 1.0/Other"><strong>Other</strong></a></font></td>
+								</tr>
+								<tr>
+									<td><blockquote>
+											<table cellspacing="2" cellpadding="2" border="0">
+												<tbody>
+													<tr>
+														<td>*</td>
+														<td>新特性期待中。。。</td>
+													</tr>
+												</tbody>
+											</table>
+										</blockquote>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</blockquote>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+</body>
+</html>

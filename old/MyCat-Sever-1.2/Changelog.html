@@ -1,0 +1,269 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>MyCat 1.2 - Changelog</title>
+<meta name="author" content="micmiu.com">
+<style type="text/css" media="print">
+.noPrint {
+	display: none;
+}
+
+td#mainBody {
+	width: 100%;
+}
+</style>
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#525D76" alink="#525D76"
+	vlink="#525D76">
+	<div>
+		<h1>MyCat 1.2</h1>
+		<h2>Changelog</h2>
+		<table cellspacing="0" cellpadding="2" border="0">
+			<tbody>
+				<tr>
+					<td bgcolor="#525D76"><font face="arial,helvetica.sanserif"
+						color="#ffffff"><a name="MyCat 1.2"> <!--()-->
+						</a><a name="MyCat 1.2"><strong>MyCat 1.2 (svn:r478)</strong></a></font></td>
+				</tr>
+				<tr>
+					<td><blockquote>
+							<table cellspacing="0" cellpadding="2" border="0">
+								<tbody>
+									<tr>
+										<td bgcolor="#828DA6"><font
+											face="arial,helvetica.sanserif" color="#ffffff"><a
+												name="MyCat 1.2/特性"> <!--()-->
+											</a><a name="MyCat 1.2/特性"><strong>特性</strong></a></font></td>
+									</tr>
+									<tr>
+										<td><blockquote>
+												<table cellspacing="2" cellpadding="2" border="0">
+													<tbody>
+														<tr>
+															<td>+</td>
+															<td>增加了SQL兼容的路由解析特性，通过SQL注解方式</td>
+														</tr>
+
+													</tbody>
+													<tbody>
+														<tr>
+															<td>+</td>
+															<td>增加了数据库方式的全局序列号的实现，可以用于集群模式</td>
+														</tr>
+
+													</tbody>
+													<tbody>
+														<tr>
+															<td>+</td>
+															<td>增加了查询SQL默认限制分页数的特性，如select * from
+																orders会默认改写为select * from orders limit
+																100,其中100是在schema上进行配置的参数， schema name="TESTDB"
+																checkSQLschema="true" sqlMaxLimit="100"</td>
+														</tr>
+
+													</tbody>
+													<tbody>
+														<tr>
+															<td>+</td>
+															<td>实现了多个写节点的模式，随机选取一个写节点，支持percona cluster</td>
+														</tr>
+
+													</tbody>
+													<tbody>
+														<tr>
+															<td>+</td>
+															<td>实现了AIO并优化了线程池设计，目前AIO只采用一个线程池</td>
+														</tr>
+
+													</tbody>
+													<tbody>
+														<tr>
+															<td>+</td>
+															<td>可以配置绑定本地的IP地址</td>
+														</tr>
+
+													</tbody>
+												</table>
+											</blockquote></td>
+									</tr>
+								</tbody>
+							</table>
+							<table cellspacing="0" cellpadding="2" border="0">
+								<tbody>
+									<tr>
+										<td bgcolor="#828DA6"><font
+											face="arial,helvetica.sanserif" color="#ffffff"><a
+												name="MyCat 1.0/Fix bug"> <!--()-->
+											</a><a name="MyCat 1.2/Fix bug"><strong>Fix bug</strong></a></font></td>
+									</tr>
+									<tr>
+										<td><blockquote>
+												<table cellspacing="2" cellpadding="2" border="0">
+													<tbody>
+														<tr>
+															<td>*</td>
+															<td>修复AIO连接僵死的BUG</td>
+														</tr>
+														<tr>
+															<td>*</td>
+															<td>前端连接的writeQueue改为LinkeQueue，防止队列满导致线程阻塞</td>
+														</tr>
+														<tr>
+															<td>*</td>
+															<td>AIO优化</td>
+														</tr>
+														<tr>
+															<td>*</td>
+															<td>修复了夸分片排序情况下字符串和日期的排序问题</td>
+														</tr>
+														<tr>
+															<td>*</td>
+															<td>修复了读写分离的缺陷（双主模式以及读取主节点的问题）</td>
+														</tr>
+														<tr>
+															<td>*</td>
+															<td>修复了不跨分片的SQL分页LIMIT值被修改的缺陷</td>
+														</tr>
+														<tr>
+															<td>*</td>
+															<td>修复了跨分片SQL异常时候连接被关闭的问题</td>
+														</tr>
+													</tbody>
+												</table>
+											</blockquote></td>
+									</tr>
+								</tbody>
+							</table>
+							<table cellspacing="0" cellpadding="2" border="0">
+								<tbody>
+									<tr>
+										<td bgcolor="#828DA6"><font
+											face="arial,helvetica.sanserif" color="#ffffff"><a
+												name="MyCat 1.0/Author"> <!--()-->
+											</a><a name="MyCat 1.0/Author"><strong>Author</strong></a></font></td>
+									</tr>
+									<tr>
+										<td><blockquote>
+												<table cellspacing="2" cellpadding="2" border="0">
+													<tbody>
+														<tr>
+															<td><b>新加入</b> 林志强、林晁、齐朗晔、杨创、何智峰等<br/>	（一些遗漏了真名的同学，可以来信）</td>
+														
+															<td>全面系统测试，协助发现和解决了一些重要缺陷</td>
+														</tr>
+														<tr>
+															<td>孙娟(酱油师）</td>
+															<td>全局序列号更新</td>
+														</tr>
+														<tr>
+															<td>(opencloudber）</td>
+															<td>排序归并的一些缺陷发现并修复</td>
+														</tr>
+														<tr>
+															<td>王金成(永不言败）</td>
+															<td>发现和修复一些缺陷</td>
+														</tr>
+														<tr>
+															<td>蒋常春（CC）</td>
+															<td>性能测试</td>
+														</tr>
+														<tr>
+															<td>白磊（first level ）</td>
+															<td>性能测试</td>
+														</tr>
+														<tr>
+															<td>李翔远（光电=ω=鼠标 ）</td>
+															<td>时间范围分片函数以及between支持</td>
+														</tr>
+														<tr>
+															<td>黄进兵（疯鱼）</td>
+															<td>贡献字符串分片函数</td>
+														</tr>
+														<tr>
+															<td>高权（IT坨坨）</td>
+															<td>测试以及缺陷反馈</td>
+														</tr>
+														<tr>
+															<td>吴志辉（Leader）</td>
+															<td>MyCat-server</td>
+														</tr>
+														<tr>
+															<td>rainbow 团队</td>
+															<td>MyCat-web</td>
+														</tr>
+														<tr>
+															<td>Qing</td>
+															<td>MyCat-cluster</td>
+														</tr>
+														<tr>
+															<td>提婆谭（暂定）</td>
+															<td>MyCat-Balance</td>
+														</tr>
+														<tr>
+															<td>Michael<a href="http://www.micmiu.com"
+																target="_blank">@micmiu.com</td>
+															<td>MyCat-server</td>
+														</tr>
+														<tr>
+															<td>无影</td>
+															<td>MyCat-server</td>
+														</tr>
+														<tr>
+															<td>shenzhw</td>
+															<td>性能测试</td>
+														</tr>
+														<tr>
+															<td>小鱼</td>
+															<td>测试</td>
+														</tr>
+														<tr>
+															<td>阿德</td>
+															<td>排序算法</td>
+														</tr>
+														<tr>
+															<td>面朝大海</td>
+															<td>修复BUG</td>
+														</tr>
+
+														<tr>
+															<td>木糖醇患者</td>
+															<td>修复BUG</td>
+														</tr>
+														<tr>
+															<td colspan="2">很多志愿者在努力研发中，后期版本陆续列出贡献者信息
+														</tr>
+													</tbody>
+												</table>
+											</blockquote></td>
+									</tr>
+								</tbody>
+							</table>
+							<table cellspacing="0" cellpadding="2" border="0">
+								<tbody>
+									<tr>
+										<td bgcolor="#828DA6"><font
+											face="arial,helvetica.sanserif" color="#ffffff"><a
+												name="MyCat 1.0/Other"> <!--()-->
+											</a><a name="MyCat 1.0/Other"><strong>Other</strong></a></font></td>
+									</tr>
+									<tr>
+										<td><blockquote>
+												<table cellspacing="2" cellpadding="2" border="0">
+													<tbody>
+														<tr>
+															<td>*</td>
+															<td>新特性期待中。。。</td>
+														</tr>
+													</tbody>
+												</table>
+											</blockquote></td>
+									</tr>
+								</tbody>
+							</table>
+						</blockquote></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

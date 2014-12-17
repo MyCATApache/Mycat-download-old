@@ -1,0 +1,2 @@
+"C:\Program Files\Java\jdk1.6.0_38\bin\javac" -cp "..\Mycat-server-1.1-Dev\lib\log4j-1.2.16.jar;..\Mycat-server-1.1-Dev\lib\log4j-1.2.16.jar;..\Mycat-server-1.1-Dev\lib\Mycat-server-1.1-Dev.jar" org\opencloudb\mysql\nio\handler\MultiNodeQueryHandler.java
+pause
