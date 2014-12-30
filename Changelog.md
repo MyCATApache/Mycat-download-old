@@ -4,10 +4,12 @@
 >git:
 
 Fix bug:
+
 1. 数据报文在某些特殊情况下没有实时写入Socket导致时延（重要）
 2. Druid解析器的一些空指针、Limit处理、以及单引号的Bug
 
 #####存在的缺陷
+
 1. 目前还没有发现新的Bug
 
 ---
@@ -17,12 +19,14 @@ Fix bug:
 >git:e3111dfdee64163bd15aa6022171ad34c3aad455
 
 特性:
+
 1. 一致性hash分片支持
 2. 默认Druid解析器提升性能
 3. 人工智能Catlet 编程实现跨分片Join ，143行Demo代码可供参考
 4. 性能大幅提升，相对1.2 插入性能提升100%，查询性能提升50%
 
 Fix bug:
+
 1. checkWriteBuffer可能分配不够的空间，存在潜在Bug()
 2. Mysql 连接同步优化，以及修改Timeout 超时的问题
 3. 主键缓存优化
@@ -63,6 +67,7 @@ Fix bug:
 1. 增加了SQL拦截器的功能，默认的实现将Mysql转义字符进行了处理
 
 Fix bug:
+
 1.  事务隔离问题
 
 | Author    |                    |
