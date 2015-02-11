@@ -1,4 +1,39 @@
 ###MyCat Release Notes
+####MyCat 1.3.0.3-alpha
++ order by 带函数的 的bug,如  order by date_format(traveldate, '%y-%m-%d')
+
++ 1.3.0.1修改order by ,group by 别名的bug
+
++ 增加pluginManage,修正eclipse导入lifeCycle错误
+
++ 修正多节点merge排序结果不正确bug
+
++ 修正skip过慢问题
+
++ 排序优化
+
++ 注解增加/*#mycat:格式;where condition1 or 1=1之类的永真条件路由错误问题
+
++ 修正最大堆排序结果不正确bug
+
++ between语句范围路由的支持
+
++ 修正druid group by 语句字段带表名提示字段找不到的问题
+
++ 解决druid主键in查询只匹配一个条件的问题
+
++ fixed:#87;mycat注释兼容mysql注释
+
++ 解决druid解析器order by字段名称与select语句字段名称不一制问题
+
++ 解决group by order by问题;解决select for update问题;修改错误提示信息
+
++ 解决druid解析器count语句问题
+
++ 修正Druid解析器添加分片字段错误
+
+
+
 ####MyCat 1.3.0.1
 
 >git:
