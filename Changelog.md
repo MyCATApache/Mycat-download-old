@@ -1,4 +1,11 @@
 ###MyCat Release Notes
+####MyCat 1.3.0.3-release
++ JDBC方式， 字段有别名，报错 java.lang.IllegalArgumentException: group by
+
++ session移除已关闭的连接
+
++ 增加LockTable和UnlockTables语句支持
+
 ####MyCat 1.3.0.3-alpha
 + order by 带函数的 的bug,如  order by date_format(traveldate, '%y-%m-%d')
 
