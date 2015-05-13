@@ -1,4 +1,87 @@
 ###MyCat Release Notes
+####MyCat 1.4-alpha
+###新功能
++ 增加时间戳的全局唯一序列
++ 使用jdbc 方式连接 ， 引入 druid数据源与数据库监控
++ 增加对or条件的路由支持
++ 引入load data
++ 完整实现mysql压缩协议的支持
++ 增加压缩协议的配置选项
++ 支持跨分片的avg函数以及avg与group by组合
++ catlet支持jar
++ 支持schema内，未配置的表走默认dataNode，已配置的走分片规则
++ 支持批量插入sequence生成
+  * 修改：
+  * MyCATSequnceProcessor.executeSeq 方法中获取sequence 由FoundationDB方式改为Druid方式实现。
+  * 增加一个catlet，BatchInsertSequence支持批量插入语法自动生成sequence ID。
++ schema.xml中的Table上的DataNode支持数据库均匀分布，如
+``` <table name="xxx"
+dataNode="distribute(dn1$0-372,dn11$0-372)" rule="latest-month-calldate"
+/>```
++ limit自动转换原生分页
+
+###改进和修复
++ 修改reload为非阻塞
++ 修复 自增主键，表写错大小写导致mycat无限循环获取
++ 修复DataMergeService跨线程时的异常处理
++ 增强SingleNodeHander的异常处理
++ 升级druid和univocity-parsers版本
++ 修改E-R为非阻塞
++ fixed a bug for StringUtil.getTableName(String)
++ add two test case for StringUtil.getTableName
++ fix a bug, if 'insert into' was following a '\r' or '\n'.
+edit StringUtil.getTableName(String), change "==' '" to "<=' '"
++ 避免insert判断时是非空格字符
++ 修复multi insert not provided误判
++ 修正后端jdbc方式时，delete语句解析出错的情况
++ fix a bug when 'sequence conf not found'
++ modify charset index 45 for utf8mb4
++ 解决空串被当做null的bug
++ 修复load data 默认节点时的npe异常
++ 修改心跳检查Bug，没有判断数据库切换类型
++ fix order by语句中带'符号时报错找不到字段问题。java.lang.IllegalArgumentException: all columns in order by clause should be in the selected column list!`create_time`
++ entry.getKey().toUpperCase() 不用 Upper了，容易引起误解，以为大小写的问题
++ 去掉中文提示信息改成all columns in order by clause should be in the selected column list!
++ fix a bug on reloading sequence_db_conf.properties
++ order by别名的一种场景语句解析bug，如语句SELECT c.name as cname, Count(*)   AS col_1_0_
+ from  customer c group by c.name
++ 父子表场景，子表select语句路由到多个节点报错。对应测试用例DruidMysqlRouteStrategyTest.testERRouteMutiNode
++ 带计算表达式的order by语句，select fee-3 as fee3,id from travelrecord order by fee-3
++ 增强jdbc和multiNodeQueryHandler的异常处理
++ Mycat JDBC连postgresql不能支持事务提交和回滚
++ 修改releaseConnection方法
++ 修改显示版本为1.4，升级依赖的jar为最新release版
++ 重构HeatBeat逻辑和代码，引入MySQL主从状态监控的心跳和切换逻辑
++ fix a bug on crossing sharding with 'in clause' sql
++ fix a bug on executing reload @@config, which would not reload sequence_db_conf.properties. this commit has fixed it.
++ removed bucketMapPath from PartitionByMurmurHash.java
++ MycatPrivileges单实例化 及 StringUtil增强
++ MYCAT_HOME未设置时，默认设置为当前路径。
++ 提交assembly
++ 修复encose的空指针异常
++ SONAR问题修复
++ 优化去除AIOOutputWriter
++ 解决AIO的writePendingException
++ 支持未压缩的小包粘连
++ 删除几个fdb遗留无用代码
++ 移除fdbParse相关的包，代码
++ 修复单节点ok包packid多加一次的bug
++ 实现load功能
+   * 重构部分代码
+   * 优化load data infile的性能
+   * 优化load data性能
+   * 优化load data数据包得识别，避免误认2.优化load data全局表，避免路由查找3.修复了一个在同一个连接上执行load data几百次会出错的bug
+   * 修复load data 超大文件时的bug
+   * 支持load data的自定义列分割符换行符引号等，增强了load data handler的异常处理,优化去掉aiooutputwriter的多余部分
+   * 优化load data 的clear调用
+   * 支持load data的自定义列分割符换行符引号等，增强了load data handler的异常处理
+   * 优化去掉部分load data日志
++ fix 引用类的问题
++ 修改jdbc的resultset转换RowDataPacket的方式，可以提高30%的性能
++ 修改jdbc的sql执行为多线程执行，避免jdbc跨多个节点时性能成倍消耗
+ 
+
+
 ####MyCat 1.3.0.3-release
 + JDBC方式， 字段有别名，报错 java.lang.IllegalArgumentException: group by
 
