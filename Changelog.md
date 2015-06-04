@@ -1,4 +1,48 @@
 ###MyCat Release Notes
+####MyCat 1.4-beta
+###新功能
++ 支持start transaction与begin命令开启事务
++ 支持多层嵌套or语句，并增加单元测试
++ 范围取模分片配置文件
++ 增加范围取模分片配置
++ 在分片规则中添加JCH分片配置
++ 添加跳增一致性哈希分片的测试类
++ 增加跳增一致性哈希分片算法(分片思想源自Google在2014年公开的论文，该算法几乎不占内存只需几个寄存器用于计算，速度比一致性哈希更快，横向扩展时数据迁移量大大减少。)
++ 支持范围求模算法的between路由
++ 支持DESCRIBE和DESC
++ 表名支持引号[`]
+
+###改进和修复
++ 优化重复代码逻辑
++ 增加对自增序列的非空判断，如果没有配置，则抛出配置异常，提示没有序列的定义，避免直接抛出空指针异常。
++ 修复distinct的带别名出错的bug
++ 去掉WhereUnit中的parent，没用到
++ Downgrade JDK from 8 to 7
++ Update PartitionByJumpConsistentHash.java
++ 去除不必要的cast
++ 进一步改进英语表达
++ 数据库Sequnce 异常的时候返回客户端具体错误信息，如存储过程不存在
++ 修改jdbc的心跳数据，show @@heartbeat
++ 修复aio在高并发时出现的bug
++ 修复关于JDBC方式连接后端连接占满数据库的问题 #312 中的2,3问题
++ 去掉不必要的sysout
++ 修改jdbc连接心跳检查active计算错误，show @@backend没有算jdbc连接，  
++ select sum(a-b) from c where id=100语句没有查到返回null时候，合并数据的时候报nullpointexception错误
++ 修复自增id的insert里面的值被强制转大写的bug
++ 修复insert序列解析错误和序列next value for的大小写与空格支持
++ 修复desc语句导致单元测试卡死bug
++ 修复jdbc心跳bug导致不断创建连接的bug
++ 修复druidmanager引起的jdbc连接失败问题
++ 新增，删除 修改全局表 返回受影响的行不对(应该只计算一个节点的)
++ 修复在hibernate生成的sql中group by语句中的字段和select语句中的字段的别名不一致（但是同一字段）时报错
++ 修复null被当做空串的bug
++ fix a bug, which resulted in RW seperation is unavailable
++ 文件清理，增加versions.java自动生成的功能，修正show @@versions的输出。
++ add TestCase:delete of global table route to every datanode defined
++ 全局表的delete和update紧急Bug
+
+
+
 ####MyCat 1.4-alpha
 ###新功能
 + 增加时间戳的全局唯一序列
