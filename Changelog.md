@@ -1,4 +1,26 @@
 ###MyCat Release Notes
+####MyCat 1.4-RC
+###新功能
++ 增加日期范围hash分片算法
++ RELOAD @@CONFIG只reload基本配置，不重新加载数据源，RELOAD @@CONFIG_ALL重加载所有配置
++ 支持SequoiaDB
++ 增加mycat私有仓库
++ 添加having 支持。目前只支持 =，>，<，!=，>=，<=
+
+###改进和修复
++ Update BufferPool.java
++ 修改只考虑可见性，未考虑同步的newCreated变量
++ 缓存正则表达式
++ 修复mongodb的acceptsURL
++ jdbc 驱动 bug
++ 防止拿到连接后，执行sql时。连接被后端检查给关闭掉
++ 修改心跳检查bug
++ 修复between and 字段带别名时路由错误的bug
++ Join Key 不在Select 的第一个字段的bug
++ 解决客户端JDBC连接到管理接口报 unsupported statement 错误。
++ ShareJoin bug
+
+
 ####MyCat 1.4-beta
 ###新功能
 + 支持start transaction与begin命令开启事务
