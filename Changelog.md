@@ -19,11 +19,11 @@
 + 优化去掉eof等待和去掉一次线程切换
 + 修复nextProcessor数组越界问题
 + 全局表or语句路由错误，并增加单元测试
-+ fix心跳bug到1.4
++ fix心跳bug
 + 修复主从状态监控和读写分离
 + remove CancelledKeyException
-+ fix jdbc驱动5.1.36的bug到1.4
-+ 合并BALANCE_ALL_READ到1.4
++ fix jdbc驱动5.1.36的bug
++ 合并BALANCE_ALL_READ
 + 事务中只有select时，释放时rollback
 + 添加reload命令行说明
 
