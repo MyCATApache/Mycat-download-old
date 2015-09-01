@@ -1,4 +1,32 @@
 ###MyCat Release Notes
+####MyCat 1.4-RELEASE
+###新功能
++ 添加常见编码默认值防止用户未配置文件
++ 字符集索引改成动态可配置
++ 加上SequoiaDB JDBC配置
++ ER子表的自增主键的支持
++ 增加 ddl 支持 ，默认发送到所有请求
++ 修改读操作获取负载节点的逻辑，将负载类型为1、2、3的逻辑合并为一个方法
++ 支持后端jdbc事务隔离级别设置
+
+###改进和修复
++ 添加跳过对null的reason处理。
++ 修改rollback日志级别
++ 修复主从切换慢和重新加载数据源慢的问题
++ 修复心跳启动立马切换主从 bug
++ 默认节点 null bug修复
++ fix高并发npe和排序问题
++ 优化去掉eof等待和去掉一次线程切换
++ 修复nextProcessor数组越界问题
++ 全局表or语句路由错误，并增加单元测试
++ fix心跳bug到1.4
++ 修复主从状态监控和读写分离
++ remove CancelledKeyException
++ fix jdbc驱动5.1.36的bug到1.4
++ 合并BALANCE_ALL_READ到1.4
++ 事务中只有select时，释放时rollback
++ 添加reload命令行说明
+
 ####MyCat 1.4-RC
 ###新功能
 + 增加日期范围hash分片算法
