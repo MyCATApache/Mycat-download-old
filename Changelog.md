@@ -1,4 +1,81 @@
 ###MyCat Release Notes
+####1.5-RELEASE
+###新功能
++ 支持常见mysql gui不填写默认dbname
++ 支持navicat的showtable语句
++ 支持show full table from
+
+###改进和修复
++ 修复 mycat 版本导致应用驱动识别错误无法支持毫秒
++ 修复 分片节点 第一个节点不是默认节点时候 desc table 路由到默认节点的bug 表名大写转换
++ 修复 去掉分号 bug  结尾-1 不是-2
++ 测试：堆栈实现解析表名
++ 修复 重新 xml dtd 验证失败问题
++ SQL汇总统计 清理参数
+
+####1.5-GA
+###新功能
++ 高频SQL分析 加user
++ xml 转换yaml命令行工具.
++ 新增 SQL / HIGH / SLOW / TABLE 指令  clear 参数 true表示清除cache， 如: show @@sql true;  show @@sql.high false;
++ 配合mycat eye SQL监控持久化，获取数据后清理
++ SHOW @@White  ip白名单
+
+###改进和修复
++ 修复 wapper 日志无用输出
++ 修复hint sql type 引擎的问题
++ 修复重写xml dtd丢失问题
++ 白名单 写回文件
++ ip类型写错
++ 修复 注解SQL的 sqlType 与 实际SQL的 sqlType 不一致问题
++ 根据用户的反馈， 修复 QueryResult 在高并发的情况下 endTime 时间有延迟的问题,  sql/high/slow/table 新增 clear 参数
++ fix bug for multi-tenancy using /*!mycat:schema=DB1*/ select * from table  (oracle)
++ 为MyCat 的 SERVER VERSION 增加了注释， 增加了一个 dump ，可供调试时输出内容
++ Change version info
++ 增加 SET IGNORE UTIL
++ 实际使用中PHP用户经常会操作多个SET指令组成一个Stmt , 所以该指令检测功能独立出来
++ 增加 reload @@sqlstat=open/close 指令到 help
++ fix带物理库名路由到随机节点的bug
++ 更换License
++ fix sharejoin bug
+
+####MyCat 1.5-ALPHA
+###新功能
++ 新增支持 joinkey 为varchar 类型的sharejoin
++ 增加控制指令，可关闭或打开实时统计分析的功能
++ 忽略部分 SET 指令, 避免WARN 不断的刷日志
++ 默认mycat 统计分析模块为打开状态
+	+ 可通过如下指令设置关闭或打开 实时统计分析模块
+	+ reload @@sqlstat=close;
+	+ reload @@sqlstat=open;
++ 增加 SQL 条件的分析，用于 列值/访问次数  的实时统计
++ 支持设置规则 reload @@query_cf=表名&字段  
++ 支持清除规则 reload @@query_cf=NULL
++ 支持 show @@sql.condition
++ 新增setnodes方法
++ xml to yaml tool
+
+###改进和修复
++ 修改 isInit 需要声明为 volatile
++ fix： HintHandlerFactory 线程安全问题和多次重复初始化的问题
++ -close connection,reason:program err:java.lang.IndexOutOfBoundsException
++ 问题load大文件出现临文件dn1.txt找不到，load大文件出现空指针的异常，load出现路由错误的问题from berylgreen
++ fix gen zkurl bug
++ 修复reload_all的bug
++ zk-create 文件有问题
++ 修复:客户端字符集同步不一致.
++ 后端链接在同步完毕之后才回调修改当前后端链接的字符集,导致第一条发送出去的字符是使用后端链接的字符集进行编码的,而不是真正前端链接的字符集,导致编码出错.
++ 添加insert误判的单元测试
++ 非彻底解决insert 语句误判问题
++ 修复explain insert 执行的bug
++ done load configration from zookeeper
++ 修复 sql 统计列表 里面看到好多非业务sql问题，可能的慢sql 里面 sql执行时间不太对
++ 添加默认不使用zookeeper进行加载.
++ done load configration from zookeeper
++ wrapper.ping.timeout
++ 修复在注解方式批量导入时，自增字段不能正确获取的问题（以本地时间算法的自增方式）
++ 解决mycat内部统计的druid sql parse类型转换错误
+
 ####MyCat 1.4-RELEASE
 ###新功能
 + 添加常见编码默认值防止用户未配置文件
