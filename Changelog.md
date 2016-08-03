@@ -1,46 +1,46 @@
 ###MyCat Release Notes
 ####1.6-ALPHA
 ###新功能
-+非堆内存(Direct Memory)处理跨分片结果集的Merge/order by/group by/limit
-+两种基于zk的全局序列
-+停机扩容缩容工具，支持任意路由规则
-+全局表一致性检测
-+server.xml中添加配置项让mycat可以设置要模拟的mysql的版本号
-+缓存池管理支持DirectByteBufferPool和ByteBufferArena切换
-+新的注解方式hint sql支持的格式/** mycat: */
-+postgre的native协议支持
-+支持mysql和oracle存储过程，out参数、多结果集返回
-+预编译prepare的支持
-+master/slave注解
-+库内分表特性
-+支持自生成ID的batchInsert
-+支持rails的set names 语句
-+新增show @@sql.resultset统计大结果集记录及其系统配置
-+TxReadOnly支持
-+兼容PhpAdmin's 控制台管理,支持mysql information_schema 元数据返回
++ 非堆内存(Direct Memory)处理跨分片结果集的Merge/order by/group by/limit
++ 两种基于zk的全局序列
++ 停机扩容缩容工具，支持任意路由规则
++ 全局表一致性检测
++ server.xml中添加配置项让mycat可以设置要模拟的mysql的版本号
++ 缓存池管理支持DirectByteBufferPool和ByteBufferArena切换
++ 新的注解方式hint sql支持的格式/** mycat: */
++ postgre的native协议支持
++ 支持mysql和oracle存储过程，out参数、多结果集返回
++ 预编译prepare的支持
++ master/slave注解
++ 库内分表特性
++ 支持自生成ID的batchInsert
++ 支持rails的set names 语句
++ 新增show @@sql.resultset统计大结果集记录及其系统配置
++ TxReadOnly支持
++ 兼容PhpAdmin's 控制台管理,支持mysql information_schema 元数据返回
 
 ###改进和修复
-+navicat stat sql bug
-+PartitionByMod算法未考虑引号的问题
-+修复跨分片查询时空指针报错问题
-+Allow % in user name, which is used in some cloud MySQL DB.
-+心跳切换的判断不应该判断读写分离的状态
-+当分库字段为uuid时，使用sharding-by-murmur规则配置主子表关系，导致主子表关联数据无法插入到同一个库中
-+监测数据库同步状态，在 switchType=-1或者1的情况下，也需要收集主从同步状态
-+优化SQLStat导致性能下降
-+后端连接切换或者挂掉修复
-+对于ShareJoin的bug修改。
-+recieve rollback,but fond backend con is closed or quit
-+按月分片设置起始月份范围从而循环使用，对落此范围外的数据通过计算偏移得到目标分片
-+Optimization: handling oom error in NIOReactor and BufferPool class
-+Fixbug: a. Mycat hang problem b. SQL error and rollback blocked in 
-+Fix bug, do not have having clause when route to single node
-+fix 遍历map的bug，事务隔离级别的优化，完善 index_to_charset.properties
-+fix RouteStrategyFactory 线程安全问题 和 DefaultSqlInterceptor 导致的无法在末尾插入\字符的问题
-+fix DefaultSqlInterceptor中为了支持foundationdb parser而进行的字符转换，导致无法插入 \
-+修改 tryExistsCon 函数支持 master/slave注解
-+int to long 防止发生越界
-+主从同步切换 show slave status 的情况下, 修复 正常的 read host 不可用问题, 及stat 处的 bug 修正
++ navicat stat sql bug
++ PartitionByMod算法未考虑引号的问题
++ 修复跨分片查询时空指针报错问题
++ Allow % in user name, which is used in some cloud MySQL DB.
++ 心跳切换的判断不应该判断读写分离的状态
++ 当分库字段为uuid时，使用sharding-by-murmur规则配置主子表关系，导致主子表关联数据无法插入到同一个库中
++ 监测数据库同步状态，在 switchType=-1或者1的情况下，也需要收集主从同步状态
++ 优化SQLStat导致性能下降
++ 后端连接切换或者挂掉修复
++ 对于ShareJoin的bug修改。
++ recieve rollback,but fond backend con is closed or quit
++ 按月分片设置起始月份范围从而循环使用，对落此范围外的数据通过计算偏移得到目标分片
++ Optimization: handling oom error in NIOReactor and BufferPool class
++ Fixbug: a. Mycat hang problem b. SQL error and rollback blocked in 
++ Fix bug, do not have having clause when route to single node
++ fix 遍历map的bug，事务隔离级别的优化，完善 index_to_charset.properties
++ fix RouteStrategyFactory 线程安全问题 和 DefaultSqlInterceptor 导致的无法在末尾插入\字符的问题
++ fix DefaultSqlInterceptor中为了支持foundationdb parser而进行的字符转换，导致无法插入 \
++ 修改 tryExistsCon 函数支持 master/slave注解
++ int to long 防止发生越界
++ 主从同步切换 show slave status 的情况下, 修复 正常的 read host 不可用问题, 及stat 处的 bug 修正
 
 
 ####1.5-RELEASE
