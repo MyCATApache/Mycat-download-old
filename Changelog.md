@@ -1,4 +1,29 @@
 ###MyCat Release Notes
+####1.6-BETA
+###新功能
++ 增加了用户db/table 表级的DML语句权限控制
++ 重构原有隔离区，改为firewall
++ 添加新路由规则，根据日期查询日志数据 冷热数据分布 ，最近n个月的到实时交易库查询，超过n个月的按照m天分片
+
+###改进和修复
++ change load data max column setting
++ 修复堆外排序的若干错误等
++ 修复durid-1.0.24 版本造成的防火墙BUG
++ 修复prepare指令多节点返回错误和单节点返回错误
++ 修复后端使用pg原生协议时当查询数据量大时原有读取方式 会出现 nio 的粘包问题.
++ 解决数据类型COL_TYPE_LONG和row中列为null时，引起Mycat异常
++ 修复后端pg原生协议时类型错误、统计函数错误、bufferpool使用等错误
++ 统一定时器时间单位为毫秒
++ 初步重构zk配置统一从myid.properties取
++ 修复ShareJoin关联右表没执行 
++ 修复mergeColsMap空指针报错问题
++ 修复schema.xml中 配置 checkSQLschema="true" ，sql语句中含schema时，有bug
++ 修复查询语句表名中存在【`】符号时无法路由至对应分片
++ 按天分片，跨头尾分片BUG修改
++ 修复 日志路由规则错误
++ 修改对于update语句中set子句包含分片字段更新语句的处理逻辑
+
+
 ####1.6-ALPHA
 ###新功能
 + 非堆内存(Direct Memory)处理跨分片结果集的Merge/order by/group by/limit
