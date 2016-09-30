@@ -1,7 +1,7 @@
 ###MyCat Release Notes
 ####1.6-RELEASE
 ###新功能
-+ 添加show @@directmemory制
++ 添加show @@directmemory监控命令
 + 新增lock tables 功能
 + reload @@config_all支持不影响当前事务
 + prepare指令支持blob
