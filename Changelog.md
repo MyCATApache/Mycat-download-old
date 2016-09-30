@@ -1,4 +1,20 @@
 ###MyCat Release Notes
+####1.6-RELEASE
+###新功能
++ 添加show @@directmemory制
++ 新增lock tables 功能
++ reload @@config_all支持不影响当前事务
++ prepare指令支持blob
++ 分片表配置检查
++ zk模块重构
+
+###改进和修复修复去库名bug
++ 修复去库名bug
++ 修复group by 结果集错误
++ 处理关闭流问题，为日志输出增加堆栈打印
++ change load data max column setting
+
+
 ####1.6-BETA
 ###新功能
 + 增加了用户db/table 表级的DML语句权限控制
