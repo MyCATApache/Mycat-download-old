@@ -12,7 +12,7 @@
 + 修复去库名bug
 + 修复group by 结果集错误
 + 处理关闭流问题，为日志输出增加堆栈打印
-+ change load data max column setting
+
 
 
 ####1.6-BETA
